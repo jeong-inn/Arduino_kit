@@ -13,7 +13,7 @@ void oled_show(int count){
   sprintf(temp_buffer, "count : %d", count);
   oled.setLine(1, "*Smart Factory*");
   oled.setLine(2, temp_buffer);
-  oled.setLine(3, "-------___-");
+  oled.setLine(3, "-----------");
   oled.display();  
 }
 
