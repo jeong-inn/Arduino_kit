@@ -2,8 +2,8 @@ const int echo = D8;
 const int trig = D9;
 const int cds = A3;
 
-const int led1 = D3; //blue
-const int led2 = D2; //green
+const int led1 = D2; //green
+const int led2 = D3; //blue
 
 const int cds_threshold = 300;
 const int usw_threshold = 30;
@@ -30,23 +30,23 @@ void loop(){
   float distance = ((float)(340 * duration) / 10000) / 2;
   int cdsValue = (analogRead(cds))/10;
   
-  if ( cdsValue < cds_threshold )
+  if( distance < usw_threshold )
     digitalWrite(led1, HIGH);
   else
     digitalWrite(led1, LOW);
-
-  Serial.print(" 조도 센서 : ");
-  Serial.println(cdsValue);
-
-  if( distance < usw_threshold )
-    digitalWrite(led2, HIGH);
-  else
-    digitalWrite(led2, LOW);
 
   Serial.print( " 초음파 센서 : ");
   Serial.print(distance);
   Serial.println("cm");
   Serial.println("-----------------");
+  
+  if ( cdsValue < cds_threshold )
+    digitalWrite(led2, HIGH);
+  else
+    digitalWrite(led2, LOW);
+
+  Serial.print(" 조도 센서 : ");
+  Serial.println(cdsValue);
 
   delay(300);
 }
